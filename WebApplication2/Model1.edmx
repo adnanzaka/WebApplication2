@@ -1,0 +1,1775 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LabinalModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2005" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="LabinalModelStoreContainer">
+          <EntitySet Name="BatchDetail" EntityType="LabinalModel.Store.BatchDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Batches" EntityType="LabinalModel.Store.Batches" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="GroupsAccessRights" EntityType="LabinalModel.Store.GroupsAccessRights" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="History" EntityType="LabinalModel.Store.History" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Machine" EntityType="LabinalModel.Store.Machine" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OrderDetail" EntityType="LabinalModel.Store.OrderDetail" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Orders" EntityType="LabinalModel.Store.Orders" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PagesInfo" EntityType="LabinalModel.Store.PagesInfo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PersonGroups" EntityType="LabinalModel.Store.PersonGroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Persons" EntityType="LabinalModel.Store.Persons" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhoneNumbers" EntityType="LabinalModel.Store.PhoneNumbers" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PhoneNumberType" EntityType="LabinalModel.Store.PhoneNumberType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Reels" EntityType="LabinalModel.Store.Reels" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="LabinalModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Tags" EntityType="LabinalModel.Store.Tags" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_BatcheDetail_Batches" Association="LabinalModel.Store.FK_BatcheDetail_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="BatchDetail" EntitySet="BatchDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatcheDetail_Reels" Association="LabinalModel.Store.FK_BatcheDetail_Reels">
+            <End Role="Reels" EntitySet="Reels" />
+            <End Role="BatchDetail" EntitySet="BatchDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerGroups" Association="LabinalModel.Store.FK_Customers_CustomerGroups">
+            <End Role="PersonGroups" EntitySet="PersonGroups" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Persons" Association="LabinalModel.Store.FK_History_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="History" EntitySet="History" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Batches" Association="LabinalModel.Store.FK_OrderDetail_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Orders" Association="LabinalModel.Store.FK_OrderDetail_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="LabinalModel.Store.FK_Orders_Customers">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Machine" Association="LabinalModel.Store.FK_Orders_Machine">
+            <End Role="Machine" EntitySet="Machine" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_phone_numbers_Customers" Association="LabinalModel.Store.FK_phone_numbers_Customers">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PhoneNumbers" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_phone_numbers_tbl_phone_number_type" Association="LabinalModel.Store.FK_phone_numbers_tbl_phone_number_type">
+            <End Role="PhoneNumberType" EntitySet="PhoneNumberType" />
+            <End Role="PhoneNumbers" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reels_Tags" Association="LabinalModel.Store.FK_Reels_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="Reels" EntitySet="Reels" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_web_groups_acl_tbl_employee_groups" Association="LabinalModel.Store.FK_tbl_web_groups_acl_tbl_employee_groups">
+            <End Role="PersonGroups" EntitySet="PersonGroups" />
+            <End Role="GroupsAccessRights" EntitySet="GroupsAccessRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_web_groups_acl_tbl_pages_info" Association="LabinalModel.Store.FK_tbl_web_groups_acl_tbl_pages_info">
+            <End Role="PagesInfo" EntitySet="PagesInfo" />
+            <End Role="GroupsAccessRights" EntitySet="GroupsAccessRights" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BatchDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="BatchID" Type="int" Nullable="false" />
+          <Property Name="ReelID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Batches">
+          <Key>
+            <PropertyRef Name="BatchID" />
+          </Key>
+          <Property Name="BatchID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="GroupsAccessRights">
+          <Key>
+            <PropertyRef Name="group_access_id" />
+          </Key>
+          <Property Name="group_access_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="page_id" Type="int" Nullable="false" />
+          <Property Name="add_permission" Type="bit" Nullable="false" />
+          <Property Name="view_permission" Type="bit" Nullable="false" />
+          <Property Name="edit_permission" Type="bit" Nullable="false" />
+          <Property Name="delete_permission" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+          </Key>
+          <Property Name="HistoryID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="varchar" MaxLength="50" />
+          <Property Name="Detail" Type="varchar" MaxLength="1000" />
+          <Property Name="PersonID" Type="int" />
+          <Property Name="ActionDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="MachineID" />
+          </Key>
+          <Property Name="MachineID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="NumerOfReels" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="int" Nullable="false" />
+          <Property Name="BatchID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MachineID" Type="int" Nullable="false" />
+          <Property Name="OrderNumber" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrderDescription" Type="varchar" MaxLength="50" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PagesInfo">
+          <Key>
+            <PropertyRef Name="page_id" />
+          </Key>
+          <Property Name="page_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="page_name" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="page_url" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="status" Type="bit" Nullable="false" />
+          <Property Name="add" Type="bit" Nullable="false" />
+          <Property Name="edit" Type="bit" Nullable="false" />
+          <Property Name="view" Type="bit" Nullable="false" />
+          <Property Name="delete" Type="bit" Nullable="false" />
+          <Property Name="parentId" Type="bigint" />
+          <Property Name="Description" Type="varchar" MaxLength="2000" />
+          <Property Name="include_in_menu" Type="bit" />
+        </EntityType>
+        <EntityType Name="PersonGroups">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="status" Type="bit" />
+          <Property Name="description" Type="varchar" MaxLength="1000" />
+        </EntityType>
+        <EntityType Name="Persons">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Address" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="City" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="50" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="group_id" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneNumbers">
+          <Key>
+            <PropertyRef Name="phone_id" />
+          </Key>
+          <Property Name="phone_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="phone_no" Type="char" Nullable="false" MaxLength="20" />
+          <Property Name="phone_number_type_id" Type="int" Nullable="false" />
+          <Property Name="PersonID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PhoneNumberType">
+          <Key>
+            <PropertyRef Name="phone_number_type_id" />
+          </Key>
+          <Property Name="phone_number_type_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Reels">
+          <Key>
+            <PropertyRef Name="ReelID" />
+          </Key>
+          <Property Name="ReelID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Tag_Id" Type="int" Nullable="false" />
+          <Property Name="WireType" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Refrence" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="StrandQuality" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tags">
+          <Key>
+            <PropertyRef Name="Tag_Id" />
+          </Key>
+          <Property Name="Tag_Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TagID" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <Association Name="FK_BatcheDetail_Batches">
+          <End Role="Batches" Type="LabinalModel.Store.Batches" Multiplicity="1" />
+          <End Role="BatchDetail" Type="LabinalModel.Store.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="BatchID" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="BatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatcheDetail_Reels">
+          <End Role="Reels" Type="LabinalModel.Store.Reels" Multiplicity="1" />
+          <End Role="BatchDetail" Type="LabinalModel.Store.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reels">
+              <PropertyRef Name="ReelID" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="ReelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerGroups">
+          <End Role="PersonGroups" Type="LabinalModel.Store.PersonGroups" Multiplicity="1" />
+          <End Role="Persons" Type="LabinalModel.Store.Persons" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonGroups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Persons">
+          <End Role="Persons" Type="LabinalModel.Store.Persons" Multiplicity="0..1" />
+          <End Role="History" Type="LabinalModel.Store.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Batches">
+          <End Role="Batches" Type="LabinalModel.Store.Batches" Multiplicity="1" />
+          <End Role="OrderDetail" Type="LabinalModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="BatchID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="BatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Orders">
+          <End Role="Orders" Type="LabinalModel.Store.Orders" Multiplicity="1" />
+          <End Role="OrderDetail" Type="LabinalModel.Store.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Persons" Type="LabinalModel.Store.Persons" Multiplicity="1" />
+          <End Role="Orders" Type="LabinalModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Machine">
+          <End Role="Machine" Type="LabinalModel.Store.Machine" Multiplicity="1" />
+          <End Role="Orders" Type="LabinalModel.Store.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine">
+              <PropertyRef Name="MachineID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="MachineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_phone_numbers_Customers">
+          <End Role="Persons" Type="LabinalModel.Store.Persons" Multiplicity="1" />
+          <End Role="PhoneNumbers" Type="LabinalModel.Store.PhoneNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PhoneNumbers">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_phone_numbers_tbl_phone_number_type">
+          <End Role="PhoneNumberType" Type="LabinalModel.Store.PhoneNumberType" Multiplicity="1" />
+          <End Role="PhoneNumbers" Type="LabinalModel.Store.PhoneNumbers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneNumberType">
+              <PropertyRef Name="phone_number_type_id" />
+            </Principal>
+            <Dependent Role="PhoneNumbers">
+              <PropertyRef Name="phone_number_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reels_Tags">
+          <End Role="Tags" Type="LabinalModel.Store.Tags" Multiplicity="1" />
+          <End Role="Reels" Type="LabinalModel.Store.Reels" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Tag_Id" />
+            </Principal>
+            <Dependent Role="Reels">
+              <PropertyRef Name="Tag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_web_groups_acl_tbl_employee_groups">
+          <End Role="PersonGroups" Type="LabinalModel.Store.PersonGroups" Multiplicity="1" />
+          <End Role="GroupsAccessRights" Type="LabinalModel.Store.GroupsAccessRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonGroups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="GroupsAccessRights">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_web_groups_acl_tbl_pages_info">
+          <End Role="PagesInfo" Type="LabinalModel.Store.PagesInfo" Multiplicity="1" />
+          <End Role="GroupsAccessRights" Type="LabinalModel.Store.GroupsAccessRights" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagesInfo">
+              <PropertyRef Name="page_id" />
+            </Principal>
+            <Dependent Role="GroupsAccessRights">
+              <PropertyRef Name="page_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="BatchDetail_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BatchDetail_CountAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_CountAllByFK_ReelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_DeleteAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_DeleteAllByFK_ReelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="BatchDetail_SelectAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectAllByFK_ReelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectFullByPKFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_SelectFullByPKFK_ReelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_UpdateAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="FK_BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_UpdateAllByFK_ReelID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="FK_ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="BatchDetail_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Batches_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Batches_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Batches_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Batches_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Batches_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="InOut" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Batches_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Batches_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Batches_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Batches_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Batches_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Batches_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" ReturnType="int" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GroupsAccessRights_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GroupsAccessRights_CountAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_CountAllByFK_page_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_DeleteAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_DeleteAllByFK_page_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="InOut" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="add_permission" Type="bit" Mode="In" />
+          <Parameter Name="view_permission" Type="bit" Mode="In" />
+          <Parameter Name="edit_permission" Type="bit" Mode="In" />
+          <Parameter Name="delete_permission" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GroupsAccessRights_SelectAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectAllByFK_page_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectFullByPKFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_SelectFullByPKFK_page_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="add_permission" Type="bit" Mode="In" />
+          <Parameter Name="view_permission" Type="bit" Mode="In" />
+          <Parameter Name="edit_permission" Type="bit" Mode="In" />
+          <Parameter Name="delete_permission" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_UpdateAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="add_permission" Type="bit" Mode="In" />
+          <Parameter Name="view_permission" Type="bit" Mode="In" />
+          <Parameter Name="edit_permission" Type="bit" Mode="In" />
+          <Parameter Name="delete_permission" Type="bit" Mode="In" />
+          <Parameter Name="FK_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_UpdateAllByFK_page_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="add_permission" Type="bit" Mode="In" />
+          <Parameter Name="view_permission" Type="bit" Mode="In" />
+          <Parameter Name="edit_permission" Type="bit" Mode="In" />
+          <Parameter Name="delete_permission" Type="bit" Mode="In" />
+          <Parameter Name="FK_page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GroupsAccessRights_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_access_id" Type="int" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="add_permission" Type="bit" Mode="In" />
+          <Parameter Name="view_permission" Type="bit" Mode="In" />
+          <Parameter Name="edit_permission" Type="bit" Mode="In" />
+          <Parameter Name="delete_permission" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="OrderDetail_CountAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_CountAllByFK_OrderID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_DeleteAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_DeleteAllByFK_OrderID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="InOut" />
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="OrderDetail_SelectAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectAllByFK_OrderID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectFullByPKFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_SelectFullByPKFK_OrderID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_UpdateAllByFK_BatchID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="FK_BatchID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_UpdateAllByFK_OrderID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="FK_OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="OrderDetail_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="BatchID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Orders_CountAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_DeleteAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="InOut" />
+          <Parameter Name="OrderNumber" Type="varchar" Mode="In" />
+          <Parameter Name="OrderDescription" Type="varchar" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Orders_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Orders_SelectAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Orders_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_SelectFullByPKFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="OrderNumber" Type="varchar" Mode="In" />
+          <Parameter Name="OrderDescription" Type="varchar" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Orders_UpdateAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="OrderNumber" Type="varchar" Mode="In" />
+          <Parameter Name="OrderDescription" Type="varchar" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="FK_PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Orders_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OrderID" Type="int" Mode="In" />
+          <Parameter Name="OrderNumber" Type="varchar" Mode="In" />
+          <Parameter Name="OrderDescription" Type="varchar" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PagesInfo_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="InOut" />
+          <Parameter Name="page_name" Type="varchar" Mode="In" />
+          <Parameter Name="page_url" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="add" Type="bit" Mode="In" />
+          <Parameter Name="edit" Type="bit" Mode="In" />
+          <Parameter Name="view" Type="bit" Mode="In" />
+          <Parameter Name="delete" Type="bit" Mode="In" />
+          <Parameter Name="parentId" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="include_in_menu" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PagesInfo_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="page_name" Type="varchar" Mode="In" />
+          <Parameter Name="page_url" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="add" Type="bit" Mode="In" />
+          <Parameter Name="edit" Type="bit" Mode="In" />
+          <Parameter Name="view" Type="bit" Mode="In" />
+          <Parameter Name="delete" Type="bit" Mode="In" />
+          <Parameter Name="parentId" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="include_in_menu" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="PagesInfo_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="page_id" Type="int" Mode="In" />
+          <Parameter Name="page_name" Type="varchar" Mode="In" />
+          <Parameter Name="page_url" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="add" Type="bit" Mode="In" />
+          <Parameter Name="edit" Type="bit" Mode="In" />
+          <Parameter Name="view" Type="bit" Mode="In" />
+          <Parameter Name="delete" Type="bit" Mode="In" />
+          <Parameter Name="parentId" Type="bigint" Mode="In" />
+          <Parameter Name="Description" Type="varchar" Mode="In" />
+          <Parameter Name="include_in_menu" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PersonGroups_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="InOut" />
+          <Parameter Name="group_name" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PersonGroups_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="group_name" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PersonGroups_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="group_name" Type="varchar" Mode="In" />
+          <Parameter Name="status" Type="bit" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Persons_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Persons_CountAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Persons_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_DeleteAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Persons_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="InOut" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Persons_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Persons_SelectAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Persons_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_SelectFullByPKFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Persons_UpdateAllByFK_group_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="FK_group_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Persons_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="FirstName" Type="varchar" Mode="In" />
+          <Parameter Name="MiddleName" Type="varchar" Mode="In" />
+          <Parameter Name="LastName" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="varchar" Mode="In" />
+          <Parameter Name="City" Type="varchar" Mode="In" />
+          <Parameter Name="PostalCode" Type="varchar" Mode="In" />
+          <Parameter Name="Country" Type="varchar" Mode="In" />
+          <Parameter Name="UserName" Type="varchar" Mode="In" />
+          <Parameter Name="Password" Type="varchar" Mode="In" />
+          <Parameter Name="group_id" Type="int" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PhoneNumbers_CountAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_CountAllByFK_phone_number_type_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_DeleteAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_DeleteAllByFK_phone_number_type_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="InOut" />
+          <Parameter Name="phone_no" Type="char" Mode="In" />
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PhoneNumbers_SelectAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectAllByFK_phone_number_type_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectFullByPKFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_SelectFullByPKFK_phone_number_type_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+          <Parameter Name="phone_no" Type="char" Mode="In" />
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_UpdateAllByFK_PersonID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+          <Parameter Name="phone_no" Type="char" Mode="In" />
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="FK_PersonID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_UpdateAllByFK_phone_number_type_id" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+          <Parameter Name="phone_no" Type="char" Mode="In" />
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="FK_phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumbers_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_id" Type="int" Mode="In" />
+          <Parameter Name="phone_no" Type="char" Mode="In" />
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="PersonID" Type="int" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PhoneNumberType_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="InOut" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="PhoneNumberType_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PhoneNumberType_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="phone_number_type_id" Type="int" Mode="In" />
+          <Parameter Name="description" Type="varchar" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Reels_CountAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Reels_CountAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Reels_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Reels_DeleteAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Reels_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="InOut" />
+          <Parameter Name="WireType" Type="varchar" Mode="In" />
+          <Parameter Name="Refrence" Type="varchar" Mode="In" />
+          <Parameter Name="StrandQuality" Type="varchar" Mode="In" />
+          <Parameter Name="TagID" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Reels_SelectAll" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Reels_SelectAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+          <Parameter Name="orderBy" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Reels_SelectByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Reels_SelectFullByPK" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Reels_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="WireType" Type="varchar" Mode="In" />
+          <Parameter Name="Refrence" Type="varchar" Mode="In" />
+          <Parameter Name="StrandQuality" Type="varchar" Mode="In" />
+          <Parameter Name="TagID" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="Reels_UpdateAllWhere" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ReelID" Type="int" Mode="In" />
+          <Parameter Name="WireType" Type="varchar" Mode="In" />
+          <Parameter Name="Refrence" Type="varchar" Mode="In" />
+          <Parameter Name="StrandQuality" Type="varchar" Mode="In" />
+          <Parameter Name="TagID" Type="varchar" Mode="In" />
+          <Parameter Name="Status" Type="bit" Mode="In" />
+          <Parameter Name="whereClause" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LabinalModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="LabinalEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="BatchDetails" EntityType="LabinalModel.BatchDetail" />
+          <EntitySet Name="Batches" EntityType="LabinalModel.Batch" />
+          <EntitySet Name="GroupsAccessRights" EntityType="LabinalModel.GroupsAccessRight" />
+          <EntitySet Name="Histories" EntityType="LabinalModel.History" />
+          <EntitySet Name="Machines" EntityType="LabinalModel.Machine" />
+          <EntitySet Name="OrderDetails" EntityType="LabinalModel.OrderDetail" />
+          <EntitySet Name="Orders" EntityType="LabinalModel.Order" />
+          <EntitySet Name="PagesInfoes" EntityType="LabinalModel.PagesInfo" />
+          <EntitySet Name="PersonGroups" EntityType="LabinalModel.PersonGroup" />
+          <EntitySet Name="Persons" EntityType="LabinalModel.Person" />
+          <EntitySet Name="PhoneNumbers" EntityType="LabinalModel.PhoneNumber" />
+          <EntitySet Name="PhoneNumberTypes" EntityType="LabinalModel.PhoneNumberType" />
+          <EntitySet Name="Reels" EntityType="LabinalModel.Reel" />
+          <EntitySet Name="sysdiagrams" EntityType="LabinalModel.sysdiagram" />
+          <EntitySet Name="Tags" EntityType="LabinalModel.Tag" />
+          <AssociationSet Name="FK_BatcheDetail_Batches" Association="LabinalModel.FK_BatcheDetail_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="BatchDetail" EntitySet="BatchDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BatcheDetail_Reels" Association="LabinalModel.FK_BatcheDetail_Reels">
+            <End Role="Reels" EntitySet="Reels" />
+            <End Role="BatchDetail" EntitySet="BatchDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Batches" Association="LabinalModel.FK_OrderDetail_Batches">
+            <End Role="Batches" EntitySet="Batches" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_web_groups_acl_tbl_employee_groups" Association="LabinalModel.FK_tbl_web_groups_acl_tbl_employee_groups">
+            <End Role="PersonGroups" EntitySet="PersonGroups" />
+            <End Role="GroupsAccessRights" EntitySet="GroupsAccessRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_web_groups_acl_tbl_pages_info" Association="LabinalModel.FK_tbl_web_groups_acl_tbl_pages_info">
+            <End Role="PagesInfo" EntitySet="PagesInfoes" />
+            <End Role="GroupsAccessRights" EntitySet="GroupsAccessRights" />
+          </AssociationSet>
+          <AssociationSet Name="FK_History_Persons" Association="LabinalModel.FK_History_Persons">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="History" EntitySet="Histories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Machine" Association="LabinalModel.FK_Orders_Machine">
+            <End Role="Machine" EntitySet="Machines" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_OrderDetail_Orders" Association="LabinalModel.FK_OrderDetail_Orders">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderDetail" EntitySet="OrderDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Orders_Customers" Association="LabinalModel.FK_Orders_Customers">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_CustomerGroups" Association="LabinalModel.FK_Customers_CustomerGroups">
+            <End Role="PersonGroups" EntitySet="PersonGroups" />
+            <End Role="Persons" EntitySet="Persons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_phone_numbers_Customers" Association="LabinalModel.FK_phone_numbers_Customers">
+            <End Role="Persons" EntitySet="Persons" />
+            <End Role="PhoneNumbers" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_phone_numbers_tbl_phone_number_type" Association="LabinalModel.FK_phone_numbers_tbl_phone_number_type">
+            <End Role="PhoneNumberType" EntitySet="PhoneNumberTypes" />
+            <End Role="PhoneNumbers" EntitySet="PhoneNumbers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reels_Tags" Association="LabinalModel.FK_Reels_Tags">
+            <End Role="Tags" EntitySet="Tags" />
+            <End Role="Reels" EntitySet="Reels" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="BatchDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BatchID" Type="Int32" Nullable="false" />
+          <Property Name="ReelID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="LabinalModel.FK_BatcheDetail_Batches" FromRole="BatchDetail" ToRole="Batches" />
+          <NavigationProperty Name="Reel" Relationship="LabinalModel.FK_BatcheDetail_Reels" FromRole="BatchDetail" ToRole="Reels" />
+        </EntityType>
+        <EntityType Name="Batch">
+          <Key>
+            <PropertyRef Name="BatchID" />
+          </Key>
+          <Property Name="BatchID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BatchDetails" Relationship="LabinalModel.FK_BatcheDetail_Batches" FromRole="Batches" ToRole="BatchDetail" />
+          <NavigationProperty Name="OrderDetails" Relationship="LabinalModel.FK_OrderDetail_Batches" FromRole="Batches" ToRole="OrderDetail" />
+        </EntityType>
+        <EntityType Name="GroupsAccessRight">
+          <Key>
+            <PropertyRef Name="group_access_id" />
+          </Key>
+          <Property Name="group_access_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="page_id" Type="Int32" Nullable="false" />
+          <Property Name="add_permission" Type="Boolean" Nullable="false" />
+          <Property Name="view_permission" Type="Boolean" Nullable="false" />
+          <Property Name="edit_permission" Type="Boolean" Nullable="false" />
+          <Property Name="delete_permission" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PersonGroup" Relationship="LabinalModel.FK_tbl_web_groups_acl_tbl_employee_groups" FromRole="GroupsAccessRights" ToRole="PersonGroups" />
+          <NavigationProperty Name="PagesInfo" Relationship="LabinalModel.FK_tbl_web_groups_acl_tbl_pages_info" FromRole="GroupsAccessRights" ToRole="PagesInfo" />
+        </EntityType>
+        <EntityType Name="History">
+          <Key>
+            <PropertyRef Name="HistoryID" />
+          </Key>
+          <Property Name="HistoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Action" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Detail" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <Property Name="PersonID" Type="Int32" />
+          <Property Name="ActionDate" Type="DateTime" />
+          <NavigationProperty Name="Person" Relationship="LabinalModel.FK_History_Persons" FromRole="History" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="Machine">
+          <Key>
+            <PropertyRef Name="MachineID" />
+          </Key>
+          <Property Name="MachineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="NumerOfReels" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Orders" Relationship="LabinalModel.FK_Orders_Machine" FromRole="Machine" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="OrderDetail">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" Nullable="false" />
+          <Property Name="BatchID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Batch" Relationship="LabinalModel.FK_OrderDetail_Batches" FromRole="OrderDetail" ToRole="Batches" />
+          <NavigationProperty Name="Order" Relationship="LabinalModel.FK_OrderDetail_Orders" FromRole="OrderDetail" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MachineID" Type="Int32" Nullable="false" />
+          <Property Name="OrderNumber" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="OrderDescription" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Machine" Relationship="LabinalModel.FK_Orders_Machine" FromRole="Orders" ToRole="Machine" />
+          <NavigationProperty Name="OrderDetails" Relationship="LabinalModel.FK_OrderDetail_Orders" FromRole="Orders" ToRole="OrderDetail" />
+          <NavigationProperty Name="Person" Relationship="LabinalModel.FK_Orders_Customers" FromRole="Orders" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="PagesInfo">
+          <Key>
+            <PropertyRef Name="page_id" />
+          </Key>
+          <Property Name="page_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="page_name" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="page_url" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="Boolean" Nullable="false" />
+          <Property Name="add" Type="Boolean" Nullable="false" />
+          <Property Name="edit" Type="Boolean" Nullable="false" />
+          <Property Name="view" Type="Boolean" Nullable="false" />
+          <Property Name="delete" Type="Boolean" Nullable="false" />
+          <Property Name="parentId" Type="Int64" />
+          <Property Name="Description" Type="String" MaxLength="2000" Unicode="false" FixedLength="false" />
+          <Property Name="include_in_menu" Type="Boolean" />
+          <NavigationProperty Name="GroupsAccessRights" Relationship="LabinalModel.FK_tbl_web_groups_acl_tbl_pages_info" FromRole="PagesInfo" ToRole="GroupsAccessRights" />
+        </EntityType>
+        <EntityType Name="PersonGroup">
+          <Key>
+            <PropertyRef Name="group_id" />
+          </Key>
+          <Property Name="group_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="group_name" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="status" Type="Boolean" />
+          <Property Name="description" Type="String" MaxLength="1000" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="GroupsAccessRights" Relationship="LabinalModel.FK_tbl_web_groups_acl_tbl_employee_groups" FromRole="PersonGroups" ToRole="GroupsAccessRights" />
+          <NavigationProperty Name="Persons" Relationship="LabinalModel.FK_Customers_CustomerGroups" FromRole="PersonGroups" ToRole="Persons" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="PersonID" />
+          </Key>
+          <Property Name="PersonID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Address" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="PostalCode" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="group_id" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Histories" Relationship="LabinalModel.FK_History_Persons" FromRole="Persons" ToRole="History" />
+          <NavigationProperty Name="Orders" Relationship="LabinalModel.FK_Orders_Customers" FromRole="Persons" ToRole="Orders" />
+          <NavigationProperty Name="PersonGroup" Relationship="LabinalModel.FK_Customers_CustomerGroups" FromRole="Persons" ToRole="PersonGroups" />
+          <NavigationProperty Name="PhoneNumbers" Relationship="LabinalModel.FK_phone_numbers_Customers" FromRole="Persons" ToRole="PhoneNumbers" />
+        </EntityType>
+        <EntityType Name="PhoneNumber">
+          <Key>
+            <PropertyRef Name="phone_id" />
+          </Key>
+          <Property Name="phone_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="phone_no" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="true" />
+          <Property Name="phone_number_type_id" Type="Int32" Nullable="false" />
+          <Property Name="PersonID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="LabinalModel.FK_phone_numbers_Customers" FromRole="PhoneNumbers" ToRole="Persons" />
+          <NavigationProperty Name="PhoneNumberType" Relationship="LabinalModel.FK_phone_numbers_tbl_phone_number_type" FromRole="PhoneNumbers" ToRole="PhoneNumberType" />
+        </EntityType>
+        <EntityType Name="PhoneNumberType">
+          <Key>
+            <PropertyRef Name="phone_number_type_id" />
+          </Key>
+          <Property Name="phone_number_type_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="PhoneNumbers" Relationship="LabinalModel.FK_phone_numbers_tbl_phone_number_type" FromRole="PhoneNumberType" ToRole="PhoneNumbers" />
+        </EntityType>
+        <EntityType Name="Reel">
+          <Key>
+            <PropertyRef Name="ReelID" />
+          </Key>
+          <Property Name="ReelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Tag_Id" Type="Int32" Nullable="false" />
+          <Property Name="WireType" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Refrence" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="StrandQuality" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="BatchDetails" Relationship="LabinalModel.FK_BatcheDetail_Reels" FromRole="Reels" ToRole="BatchDetail" />
+          <NavigationProperty Name="Tag" Relationship="LabinalModel.FK_Reels_Tags" FromRole="Reels" ToRole="Tags" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tag">
+          <Key>
+            <PropertyRef Name="Tag_Id" />
+          </Key>
+          <Property Name="Tag_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TagID" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Reels" Relationship="LabinalModel.FK_Reels_Tags" FromRole="Tags" ToRole="Reels" />
+        </EntityType>
+        <Association Name="FK_BatcheDetail_Batches">
+          <End Role="Batches" Type="LabinalModel.Batch" Multiplicity="1" />
+          <End Role="BatchDetail" Type="LabinalModel.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="BatchID" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="BatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BatcheDetail_Reels">
+          <End Role="Reels" Type="LabinalModel.Reel" Multiplicity="1" />
+          <End Role="BatchDetail" Type="LabinalModel.BatchDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Reels">
+              <PropertyRef Name="ReelID" />
+            </Principal>
+            <Dependent Role="BatchDetail">
+              <PropertyRef Name="ReelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Batches">
+          <End Role="Batches" Type="LabinalModel.Batch" Multiplicity="1" />
+          <End Role="OrderDetail" Type="LabinalModel.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Batches">
+              <PropertyRef Name="BatchID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="BatchID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_web_groups_acl_tbl_employee_groups">
+          <End Role="PersonGroups" Type="LabinalModel.PersonGroup" Multiplicity="1" />
+          <End Role="GroupsAccessRights" Type="LabinalModel.GroupsAccessRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonGroups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="GroupsAccessRights">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_web_groups_acl_tbl_pages_info">
+          <End Role="PagesInfo" Type="LabinalModel.PagesInfo" Multiplicity="1" />
+          <End Role="GroupsAccessRights" Type="LabinalModel.GroupsAccessRight" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PagesInfo">
+              <PropertyRef Name="page_id" />
+            </Principal>
+            <Dependent Role="GroupsAccessRights">
+              <PropertyRef Name="page_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_History_Persons">
+          <End Role="Persons" Type="LabinalModel.Person" Multiplicity="0..1" />
+          <End Role="History" Type="LabinalModel.History" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="History">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Machine">
+          <End Role="Machine" Type="LabinalModel.Machine" Multiplicity="1" />
+          <End Role="Orders" Type="LabinalModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Machine">
+              <PropertyRef Name="MachineID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="MachineID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_OrderDetail_Orders">
+          <End Role="Orders" Type="LabinalModel.Order" Multiplicity="1" />
+          <End Role="OrderDetail" Type="LabinalModel.OrderDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderID" />
+            </Principal>
+            <Dependent Role="OrderDetail">
+              <PropertyRef Name="OrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Orders_Customers">
+          <End Role="Persons" Type="LabinalModel.Person" Multiplicity="1" />
+          <End Role="Orders" Type="LabinalModel.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_CustomerGroups">
+          <End Role="PersonGroups" Type="LabinalModel.PersonGroup" Multiplicity="1" />
+          <End Role="Persons" Type="LabinalModel.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonGroups">
+              <PropertyRef Name="group_id" />
+            </Principal>
+            <Dependent Role="Persons">
+              <PropertyRef Name="group_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_phone_numbers_Customers">
+          <End Role="Persons" Type="LabinalModel.Person" Multiplicity="1" />
+          <End Role="PhoneNumbers" Type="LabinalModel.PhoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persons">
+              <PropertyRef Name="PersonID" />
+            </Principal>
+            <Dependent Role="PhoneNumbers">
+              <PropertyRef Name="PersonID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_phone_numbers_tbl_phone_number_type">
+          <End Role="PhoneNumberType" Type="LabinalModel.PhoneNumberType" Multiplicity="1" />
+          <End Role="PhoneNumbers" Type="LabinalModel.PhoneNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PhoneNumberType">
+              <PropertyRef Name="phone_number_type_id" />
+            </Principal>
+            <Dependent Role="PhoneNumbers">
+              <PropertyRef Name="phone_number_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Reels_Tags">
+          <End Role="Tags" Type="LabinalModel.Tag" Multiplicity="1" />
+          <End Role="Reels" Type="LabinalModel.Reel" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tags">
+              <PropertyRef Name="Tag_Id" />
+            </Principal>
+            <Dependent Role="Reels">
+              <PropertyRef Name="Tag_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LabinalModelStoreContainer" CdmEntityContainer="LabinalEntities1">
+          <EntitySetMapping Name="BatchDetails"><EntityTypeMapping TypeName="LabinalModel.BatchDetail"><MappingFragment StoreEntitySet="BatchDetail">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+            <ScalarProperty Name="ReelID" ColumnName="ReelID" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Batches"><EntityTypeMapping TypeName="LabinalModel.Batch"><MappingFragment StoreEntitySet="Batches">
+            <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="GroupsAccessRights"><EntityTypeMapping TypeName="LabinalModel.GroupsAccessRight"><MappingFragment StoreEntitySet="GroupsAccessRights">
+            <ScalarProperty Name="group_access_id" ColumnName="group_access_id" />
+            <ScalarProperty Name="group_id" ColumnName="group_id" />
+            <ScalarProperty Name="page_id" ColumnName="page_id" />
+            <ScalarProperty Name="add_permission" ColumnName="add_permission" />
+            <ScalarProperty Name="view_permission" ColumnName="view_permission" />
+            <ScalarProperty Name="edit_permission" ColumnName="edit_permission" />
+            <ScalarProperty Name="delete_permission" ColumnName="delete_permission" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Histories"><EntityTypeMapping TypeName="LabinalModel.History"><MappingFragment StoreEntitySet="History">
+            <ScalarProperty Name="HistoryID" ColumnName="HistoryID" />
+            <ScalarProperty Name="Action" ColumnName="Action" />
+            <ScalarProperty Name="Detail" ColumnName="Detail" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="ActionDate" ColumnName="ActionDate" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Machines"><EntityTypeMapping TypeName="LabinalModel.Machine"><MappingFragment StoreEntitySet="Machine">
+            <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+            <ScalarProperty Name="Name" ColumnName="Name" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="NumerOfReels" ColumnName="NumerOfReels" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="OrderDetails"><EntityTypeMapping TypeName="LabinalModel.OrderDetail"><MappingFragment StoreEntitySet="OrderDetail">
+            <ScalarProperty Name="ID" ColumnName="ID" />
+            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            <ScalarProperty Name="BatchID" ColumnName="BatchID" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Orders"><EntityTypeMapping TypeName="LabinalModel.Order"><MappingFragment StoreEntitySet="Orders">
+            <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+            <ScalarProperty Name="MachineID" ColumnName="MachineID" />
+            <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+            <ScalarProperty Name="OrderDescription" ColumnName="OrderDescription" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PagesInfoes"><EntityTypeMapping TypeName="LabinalModel.PagesInfo"><MappingFragment StoreEntitySet="PagesInfo">
+            <ScalarProperty Name="page_id" ColumnName="page_id" />
+            <ScalarProperty Name="page_name" ColumnName="page_name" />
+            <ScalarProperty Name="page_url" ColumnName="page_url" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="add" ColumnName="add" />
+            <ScalarProperty Name="edit" ColumnName="edit" />
+            <ScalarProperty Name="view" ColumnName="view" />
+            <ScalarProperty Name="delete" ColumnName="delete" />
+            <ScalarProperty Name="parentId" ColumnName="parentId" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="include_in_menu" ColumnName="include_in_menu" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PersonGroups"><EntityTypeMapping TypeName="LabinalModel.PersonGroup"><MappingFragment StoreEntitySet="PersonGroups">
+            <ScalarProperty Name="group_id" ColumnName="group_id" />
+            <ScalarProperty Name="group_name" ColumnName="group_name" />
+            <ScalarProperty Name="status" ColumnName="status" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Persons"><EntityTypeMapping TypeName="LabinalModel.Person"><MappingFragment StoreEntitySet="Persons">
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+            <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+            <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+            <ScalarProperty Name="LastName" ColumnName="LastName" />
+            <ScalarProperty Name="Address" ColumnName="Address" />
+            <ScalarProperty Name="City" ColumnName="City" />
+            <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+            <ScalarProperty Name="Country" ColumnName="Country" />
+            <ScalarProperty Name="UserName" ColumnName="UserName" />
+            <ScalarProperty Name="Password" ColumnName="Password" />
+            <ScalarProperty Name="group_id" ColumnName="group_id" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PhoneNumbers"><EntityTypeMapping TypeName="LabinalModel.PhoneNumber"><MappingFragment StoreEntitySet="PhoneNumbers">
+            <ScalarProperty Name="phone_id" ColumnName="phone_id" />
+            <ScalarProperty Name="phone_no" ColumnName="phone_no" />
+            <ScalarProperty Name="phone_number_type_id" ColumnName="phone_number_type_id" />
+            <ScalarProperty Name="PersonID" ColumnName="PersonID" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="PhoneNumberTypes"><EntityTypeMapping TypeName="LabinalModel.PhoneNumberType"><MappingFragment StoreEntitySet="PhoneNumberType">
+            <ScalarProperty Name="phone_number_type_id" ColumnName="phone_number_type_id" />
+            <ScalarProperty Name="description" ColumnName="description" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Reels"><EntityTypeMapping TypeName="LabinalModel.Reel"><MappingFragment StoreEntitySet="Reels">
+            <ScalarProperty Name="ReelID" ColumnName="ReelID" />
+            <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+            <ScalarProperty Name="WireType" ColumnName="WireType" />
+            <ScalarProperty Name="Refrence" ColumnName="Refrence" />
+            <ScalarProperty Name="StrandQuality" ColumnName="StrandQuality" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams"><EntityTypeMapping TypeName="LabinalModel.sysdiagram"><MappingFragment StoreEntitySet="sysdiagrams">
+            <ScalarProperty Name="name" ColumnName="name" />
+            <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+            <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+            <ScalarProperty Name="version" ColumnName="version" />
+            <ScalarProperty Name="definition" ColumnName="definition" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="Tags"><EntityTypeMapping TypeName="LabinalModel.Tag"><MappingFragment StoreEntitySet="Tags">
+            <ScalarProperty Name="Tag_Id" ColumnName="Tag_Id" />
+            <ScalarProperty Name="TagID" ColumnName="TagID" />
+            <ScalarProperty Name="Description" ColumnName="Description" />
+            <ScalarProperty Name="Date" ColumnName="Date" />
+            <ScalarProperty Name="Status" ColumnName="Status" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="Model1">
+        <EntityTypeShape EntityType="LabinalModel.BatchDetail" Width="1.5" PointX="10.5" PointY="3.375" Height="2.3648893229166656" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.Batch" Width="1.5" PointX="8.25" PointY="6" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.GroupsAccessRight" Width="1.5" PointX="3" PointY="5.25" Height="2.7494921874999996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.History" Width="1.5" PointX="5.25" PointY="10" Height="2.1725878906249996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.Machine" Width="1.5" PointX="6" PointY="13.875" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.OrderDetail" Width="1.5" PointX="10.5" PointY="9.875" Height="2.3648893229166674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.Order" Width="1.5" PointX="8.25" PointY="9.625" Height="2.9417936197916674" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.PagesInfo" Width="1.5" PointX="0.75" PointY="1.875" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.PersonGroup" Width="1.5" PointX="0.75" PointY="6.5" Height="2.1725878906250005" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.Person" Width="1.5" PointX="3" PointY="9" Height="4.2879036458333353" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.PhoneNumber" Width="1.5" PointX="5.25" PointY="7" Height="2.1725878906250031" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.PhoneNumberType" Width="1.5" PointX="3" PointY="2.25" Height="1.5956835937500031" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.Reel" Width="1.5" PointX="8" PointY="1" Height="2.749492187499996" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.sysdiagram" Width="1.5" PointX="10.75" PointY="6.75" Height="1.9802864583333388" IsExpanded="true" />
+        <EntityTypeShape EntityType="LabinalModel.Tag" Width="1.5" PointX="5.75" PointY="1.25" Height="2.1725878906250031" IsExpanded="true" />
+        <AssociationConnector Association="LabinalModel.FK_BatcheDetail_Batches" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="6.34375" />
+          <ConnectorPoint PointX="10.59375" PointY="6.34375" />
+          <ConnectorPoint PointX="10.59375" PointY="5.7398893229166656" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_BatcheDetail_Reels" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.5" PointY="3.562246093749998" />
+          <ConnectorPoint PointX="10.5" PointY="3.562246093749998" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_OrderDetail_Batches" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="6.5468775" />
+          <ConnectorPoint PointX="10.546875" PointY="6.5468775" />
+          <ConnectorPoint PointX="10.546875" PointY="9.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_tbl_web_groups_acl_tbl_employee_groups" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="7.24974609375" />
+          <ConnectorPoint PointX="3" PointY="7.24974609375" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_tbl_web_groups_acl_tbl_pages_info" ManuallyRouted="false">
+          <ConnectorPoint PointX="2.25" PointY="5.201396484375" />
+          <ConnectorPoint PointX="2.625" PointY="5.576396484375" />
+          <ConnectorPoint PointX="2.625" PointY="4.875" />
+          <ConnectorPoint PointX="3" PointY="5.25" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_History_Persons" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="11.0862939453125" />
+          <ConnectorPoint PointX="5.25" PointY="11.0862939453125" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_Orders_Machine" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.15625" PointY="13.875" />
+          <ConnectorPoint PointX="7.15625" PointY="12.400940755208334" />
+          <ConnectorPoint PointX="8.25" PointY="12.400940755208334" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_OrderDetail_Orders" ManuallyRouted="false">
+          <ConnectorPoint PointX="9.75" PointY="11.057444661458334" />
+          <ConnectorPoint PointX="10.5" PointY="11.057444661458334" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_Orders_Customers" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.78125" />
+          <ConnectorPoint PointX="8.25" PointY="9.78125" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_Customers_CustomerGroups" ManuallyRouted="false">
+          <ConnectorPoint PointX="1.5" PointY="8.672587890625" />
+          <ConnectorPoint PointX="1.5" PointY="11.143951822916668" />
+          <ConnectorPoint PointX="3" PointY="11.143951822916668" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_phone_numbers_Customers" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="9.0011528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="8.6261528461538468" />
+          <ConnectorPoint PointX="4.875" PointY="9.54874073677885" />
+          <ConnectorPoint PointX="5.2511528461538459" PointY="9.1725878906250031" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_phone_numbers_tbl_phone_number_type" ManuallyRouted="false">
+          <ConnectorPoint PointX="4.5" PointY="3.6653857421875031" />
+          <ConnectorPoint PointX="5.46875" PointY="3.6653857421875031" />
+          <ConnectorPoint PointX="5.46875" PointY="7" />
+        </AssociationConnector>
+        <AssociationConnector Association="LabinalModel.FK_Reels_Tags" ManuallyRouted="false">
+          <ConnectorPoint PointX="7.25" PointY="2.3362939453125016" />
+          <ConnectorPoint PointX="8" PointY="2.3362939453125016" />
+        </AssociationConnector>
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
